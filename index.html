@@ -59,20 +59,30 @@
 <body>
     <div class="container">
         <div class="input-group">
-            <input type="text" id="filename" placeholder="Enter filename (without extension)">
-            <button onclick="downloadContent()">Download</button>
+            <input type="text" id="filename-top" placeholder="Enter filename (without extension)" oninput="syncFilenames('top')">
+            <button onclick="downloadContent('top')">Download</button>
         </div>
         <textarea id="content" placeholder="Write anything here..."></textarea>
         <div class="input-group-last">
-            <input type="text" id="filename" placeholder="Enter filename (without extension)">
-            <button onclick="downloadContent()">Download</button>
+            <input type="text" id="filename-bottom" placeholder="Enter filename (without extension)" oninput="syncFilenames('bottom')">
+            <button onclick="downloadContent('bottom')">Download</button>
         </div>
     </div>
 
     <script>
-        function downloadContent() {
+        function syncFilenames(source) {
+            const topInput = document.getElementById('filename-top');
+            const bottomInput = document.getElementById('filename-bottom');
+            if (source === 'top') {
+                bottomInput.value = topInput.value;
+            } else {
+                topInput.value = bottomInput.value;
+            }
+        }
+
+        function downloadContent(position) {
             const content = document.getElementById('content').value;
-            const filename = document.getElementById('filename').value || 'untitled';
+            const filename = document.getElementById(`filename-${position}`).value || 'untitled';
             const blob = new Blob([content], { type: 'text/plain' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
