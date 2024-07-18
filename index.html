@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Textbox Website with Download</title>
+    <title>Textbox Online</title>
     <style>
         body, html {
             height: 100%;
@@ -60,12 +60,12 @@
     <div class="container">
         <div class="input-group">
             <input type="text" id="filename-top" placeholder="Enter filename (without extension)" oninput="syncFilenames('top')">
-            <button onclick="downloadContent('top')">Download</button>
+            <button onclick="downloadContent('top')">Download TXT</button>
         </div>
         <textarea id="content" placeholder="Write anything here..."></textarea>
         <div class="input-group-last">
             <input type="text" id="filename-bottom" placeholder="Enter filename (without extension)" oninput="syncFilenames('bottom')">
-            <button onclick="downloadContent('bottom')">Download</button>
+            <button onclick="downloadContent('bottom')">Download TXT</button>
         </div>
     </div>
 
